@@ -5,7 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 
-public class MainMenu extends JFrame {
+public final class MainMenu extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	int screenWidth = 300;
@@ -18,12 +18,9 @@ public class MainMenu extends JFrame {
 	JCheckBox twoPlayer;
 
 	public MainMenu() {
-
 		addButtons();
 		addActions();
-
 		getContentPane().setLayout(null);
-
 		Play.setBounds((screenWidth - buttonWidth) / 2, 5, buttonWidth,
 				buttonHeight); // Position the Play button
 		Quit.setBounds((screenWidth - buttonWidth) / 2, 50, buttonWidth,
@@ -31,7 +28,6 @@ public class MainMenu extends JFrame {
 		twoPlayer.setBounds((screenWidth - buttonWidth) / 2, 95,
 				buttonWidth * 2, buttonHeight); // Position the twoPlayer
 												// checkbox
-
 		// Adding buttons
 		getContentPane().add(Play); // Add the button to the JFrame
 		getContentPane().add(Quit); // Add the button to the JFrame
@@ -62,7 +58,7 @@ public class MainMenu extends JFrame {
 															// variable for
 															// usage
 				dispose();
-
+				new PingPong();
 			}
 		});// Play button
 
@@ -75,5 +71,10 @@ public class MainMenu extends JFrame {
 				System.exit(0); // Shut down the program
 			}
 		});// Quit button
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
 	}
 }
