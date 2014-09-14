@@ -8,8 +8,8 @@ import javax.swing.JFrame;
 public final class MainMenu extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	int screenWidth = 300;
-	int screenHeight = 150;
+	int screenWidth = 400;
+	int screenHeight = 200;
 
 	int buttonWidth = 80;
 	int buttonHeight = 40;
@@ -40,7 +40,7 @@ public final class MainMenu extends JFrame implements ActionListener {
 		setSize(screenWidth, screenHeight);
 		setTitle("Pong Menu");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setResizable(false);
+		setResizable(true);
 	}
 
 	private void addButtons() {
