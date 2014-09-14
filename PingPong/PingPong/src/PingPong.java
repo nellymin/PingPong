@@ -36,9 +36,13 @@ public class PingPong {
 		@Override
 		public void keyPressed(KeyEvent e) {
 			if (e.getKeyCode() == KeyEvent.VK_UP) {
-				pingPongPanel.setStickMovement(-1);
+				pingPongPanel.setStickOneMovement(-1);
 			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-				pingPongPanel.setStickMovement(1);
+				pingPongPanel.setStickOneMovement(1);
+			} else if (e.getKeyCode() == KeyEvent.VK_W) {
+				pingPongPanel.setStickTwoMovement(1);
+			} else if (e.getKeyCode() == KeyEvent.VK_S) {
+				pingPongPanel.setStickTwoMovement(-1);
 			} else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 				pingPongPanel.setStepX(1);
 				pingPongPanel.setStepY(1);
