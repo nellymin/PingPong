@@ -18,6 +18,7 @@ public class PingPong {
 		
 		frame.addKeyListener(new PingPongListener());
 		
+		
 		while (true) {
 			Thread.sleep(3);
 			pingPongPanel.moveBall();
