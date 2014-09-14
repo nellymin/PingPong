@@ -3,9 +3,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 public class PingPongPanel extends JPanel {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private static final int BALL_SIZE = 25;
 	private static final int STICK_SIZE = 100;
@@ -16,6 +14,7 @@ public class PingPongPanel extends JPanel {
 	private int stickOneStart = 200; // Lyudmil
 	private int stickTwoStart = 200; // Lyudmil
 	private int stickStep = 0;
+	private int stickStepTwo = 0;
 	private int firstPlayerResult = 0; // Lyudmil
 	private int secondPlayerResult = 0; // Lyudmil
 
@@ -34,10 +33,16 @@ public class PingPongPanel extends JPanel {
 		ballStartY += this.ballStepY;
 		if (ballStartX + BALL_SIZE > getSize().getWidth()) {
 			ballStepX = -1;
+			if (ballStartY < stickTwoStart
+					|| ballStartY > stickTwoStart + STICK_SIZE)
+				firstPlayerResult++;
 		}
 
 		if (ballStartX < 0) {
 			ballStepX = 1;
+			if (ballStartY < stickOneStart
+					|| ballStartY > stickOneStart + STICK_SIZE)
+				secondPlayerResult++;
 		}
 
 		if (ballStartY + BALL_SIZE > getSize().getHeight()) {
@@ -50,9 +55,17 @@ public class PingPongPanel extends JPanel {
 	}
 
 	public void moveStick() {
-
 		this.stickOneStart += this.stickStep;
-
+		if (stickOneStart <= 1
+				|| stickOneStart >= getSize().getHeight() - STICK_SIZE) { // Niki
+			// 14
+			this.stickStep = 0; // Niki 14
+		}
+		this.stickTwoStart += this.stickStepTwo;
+		if (stickTwoStart <= 1
+				|| stickTwoStart >= getSize().getHeight() - STICK_SIZE) {
+			this.stickStepTwo = 0;
+		}
 	}
 
 	public void setStepX(int stepX) {
@@ -63,15 +76,11 @@ public class PingPongPanel extends JPanel {
 		this.ballStepY = stepY;
 	}
 
-	public void setStickMovement(int step) {
+	public void setStickOneMovement(int step) {
 		this.stickStep = step;
-		if (stickOneStart > getSize().getHeight()) { // Lyudmil
-			stickOneStart = (int) getSize().getHeight() - 100; // Lyudmil
-			stickStep = 0; // Lyudmil
-		}
-		if (stickOneStart < 0) { // Lyudmil
-			stickOneStart = 0; // Lyudmil
-			stickStep = 0; // Lyudmil
-		}
+	}
+
+	public void setStickTwoMovement(int step) {
+		this.stickStepTwo = step;
 	}
 }
