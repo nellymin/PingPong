@@ -39,9 +39,9 @@ public class PingPong {
 				pingPongPanel.setStickOneMovement(-1);
 			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 				pingPongPanel.setStickOneMovement(1);
-			} else if (e.getKeyCode() == KeyEvent.VK_W) {
-				pingPongPanel.setStickTwoMovement(1);
 			} else if (e.getKeyCode() == KeyEvent.VK_S) {
+				pingPongPanel.setStickTwoMovement(1);
+			} else if (e.getKeyCode() == KeyEvent.VK_W) {
 				pingPongPanel.setStickTwoMovement(-1);
 			} else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 				pingPongPanel.setStepX(1);
