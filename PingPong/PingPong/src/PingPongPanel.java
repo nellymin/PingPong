@@ -36,6 +36,7 @@ public class PingPongPanel extends JPanel {
 			ballStepX = -1;
 			if (ballStartY < stickTwoStart
 					|| ballStartY > stickTwoStart + STICK_SIZE) {
+				SoundEffect.SCORE.play();
 				firstPlayerResult++;
 				win(1);
 				// Nelly 
@@ -45,6 +46,8 @@ public class PingPongPanel extends JPanel {
 				ballStepY=0;
 				// Nelly
 			}
+			else
+				SoundEffect.PAD_BOUNCE.play();
 			// мини задача: за по- добър визуален ефект топчето да излиза извън
 			// очертанието на полето.
 		}
@@ -53,6 +56,7 @@ public class PingPongPanel extends JPanel {
 			ballStepX = 1;
 			if (ballStartY < stickOneStart
 					|| ballStartY > stickOneStart + STICK_SIZE) {
+				SoundEffect.SCORE.play();
 				secondPlayerResult++;
 				win(2);
 				// Nelly
@@ -62,14 +66,18 @@ public class PingPongPanel extends JPanel {
 				ballStepY=0;
 				//Nelly
 			}
+			else
+				SoundEffect.PAD_BOUNCE.play();
 		}
 
 		if (ballStartY + BALL_SIZE > getSize().getHeight()) {
 			ballStepY = -1;
+			SoundEffect.WALL_BOUNCE.play();
 		}
 
 		if (ballStartY < 0) {
 			ballStepY = 1;
+			SoundEffect.WALL_BOUNCE.play();
 		}
 	}
 
