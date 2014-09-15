@@ -130,12 +130,20 @@ public class PingPongPanel extends JPanel {
 	}
 	
 	private void win(int player) { // Niki 15
-		PingPong.isRunning = false;
+		PingPong.isRunning = false;    
+		centeringTheSticks();
 		String message = "Player " + player + " WIN!  \nplayer 1  | "
 				+ firstPlayerResult + " - " + secondPlayerResult
 				+ " |  player 2";
 		JOptionPane.showMessageDialog(null, message, "PiNg PoNg reSult",
 				JOptionPane.WARNING_MESSAGE);
 		// randomBallMovement();
+	}
+
+	private void centeringTheSticks() {
+		setStickStep(0);
+		setStickStepTwo(0);
+		this.stickOneStart = 200;  // setting the sticks to start from the center
+		this.stickTwoStart = 200;  // Dani
 	}
 }
