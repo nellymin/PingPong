@@ -31,16 +31,12 @@ public class PingPong {
 		}
 
 		public void keyReleased(KeyEvent e) {
-			if (e.getKeyCode() == KeyEvent.VK_S) {
+			if (e.getKeyCode() == KeyEvent.VK_S || 
+					e.getKeyCode() == KeyEvent.VK_W) {
 				pingPongPanel.setStickStep(0);
 			}
-			if (e.getKeyCode() == KeyEvent.VK_W) {
-				pingPongPanel.setStickStep(0);
-			}
-			if (e.getKeyCode() == KeyEvent.VK_UP) {
-				pingPongPanel.setStickStepTwo(0);
-			}
-			if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			if (e.getKeyCode() == KeyEvent.VK_UP ||
+					e.getKeyCode() == KeyEvent.VK_DOWN) {
 				pingPongPanel.setStickStepTwo(0);
 			}
 		}
