@@ -35,18 +35,33 @@ public class PingPongPanel extends JPanel {
 		if (ballStartX + BALL_SIZE > getSize().getWidth()) {
 			ballStepX = -1;
 			if (ballStartY < stickTwoStart
-					|| ballStartY > stickTwoStart + STICK_SIZE)
+					|| ballStartY > stickTwoStart + STICK_SIZE) {
 				firstPlayerResult++;
 				win(1);
-				// мини задача: за по- добър визуален ефект топчето да излиза извън очертанието на полето.
+				// Nelly 
+				ballStartX = 380;
+				ballStartY = 250;
+				ballStepX=0;
+				ballStepY=0;
+				// Nelly
+			}
+			// мини задача: за по- добър визуален ефект топчето да излиза извън
+			// очертанието на полето.
 		}
 
 		if (ballStartX < 0) {
 			ballStepX = 1;
 			if (ballStartY < stickOneStart
-					|| ballStartY > stickOneStart + STICK_SIZE)
+					|| ballStartY > stickOneStart + STICK_SIZE) {
 				secondPlayerResult++;
 				win(2);
+				// Nelly
+				ballStartX = 380;
+				ballStartY = 250;
+				ballStepX=0;
+				ballStepY=0;
+				//Nelly
+			}
 		}
 
 		if (ballStartY + BALL_SIZE > getSize().getHeight()) {
@@ -87,14 +102,18 @@ public class PingPongPanel extends JPanel {
 	public void setStickStepTwo(int step) {
 		this.stickStepTwo = step;
 	}
-	
-	public void randomBallMovement(){ // метод, който ще стартира топчето от центъра с random посока 
+
+	public void randomBallMovement() { // метод, който ще стартира топчето от
+										// центъра с random посока
 	}
-	
-	private void win(int player){ // Niki 15
-		
-		String message = "Player "+ player +" WIN!  \nplayer 1  | " + firstPlayerResult+" - "+secondPlayerResult+" |  player 2";
-		JOptionPane.showMessageDialog(null, message, "PiNg PoNg reSult", JOptionPane.WARNING_MESSAGE);
+
+	private void win(int player) { // Niki 15
+
+		String message = "Player " + player + " WIN!  \nplayer 1  | "
+				+ firstPlayerResult + " - " + secondPlayerResult
+				+ " |  player 2";
+		JOptionPane.showMessageDialog(null, message, "PiNg PoNg reSult",
+				JOptionPane.WARNING_MESSAGE);
 		// randomBallMovement();
 	}
 }
