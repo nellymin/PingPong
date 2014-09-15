@@ -31,6 +31,18 @@ public class PingPong {
 		}
 
 		public void keyReleased(KeyEvent e) {
+			if (e.getKeyCode() == KeyEvent.VK_S) {
+				pingPongPanel.setStickStep(0);
+			}
+			if (e.getKeyCode() == KeyEvent.VK_W) {
+				pingPongPanel.setStickStep(0);
+			}
+			if (e.getKeyCode() == KeyEvent.VK_UP) {
+				pingPongPanel.setStickStepTwo(0);
+			}
+			if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+				pingPongPanel.setStickStepTwo(0);
+			}
 		}
 
 		@Override
@@ -40,9 +52,9 @@ public class PingPong {
 			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 				pingPongPanel.setStickStepTwo(1);
 			} else if (e.getKeyCode() == KeyEvent.VK_S) {
-				pingPongPanel.setstickStep(1);
+				pingPongPanel.setStickStep(1);
 			} else if (e.getKeyCode() == KeyEvent.VK_W) {
-				pingPongPanel.setstickStep(-1);
+				pingPongPanel.setStickStep(-1);
 			} else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 				pingPongPanel.setStepX(1);
 				pingPongPanel.setStepY(1);

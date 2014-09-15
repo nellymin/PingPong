@@ -4,3 +4,5 @@
 /SoundEffect.class
 /SoundEffect$Volume.class
 /SoundEffect$SFX.class
+/PingPong$PingPongListener.class
+/PingPong.class

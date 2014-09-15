@@ -103,7 +103,7 @@ public class PingPongPanel extends JPanel {
 		this.ballStepY = stepY;
 	}
 
-	public void setstickStep(int step) {
+	public void setStickStep(int step) {
 		this.stickStep = step;
 	}
 
