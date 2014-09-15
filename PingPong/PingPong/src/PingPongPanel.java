@@ -34,9 +34,9 @@ public class PingPongPanel extends JPanel {
 		g.drawString("Player 2: " + secondPlayerResult, getWidth() - 60, 10); // Lyudmil
 		
 		if (isPaused) {								
-			Font f = new Font("Dialog", Font.BOLD, 20);					//	Dani
+			Font f = new Font("Dialog", Font.ITALIC, 20);					//	Dani
 			g.setFont(f);
-			g.drawString("PAUSED!!!", getWidth() / 2 - 50, getHeight() / 2);
+			g.drawString("PAUSED", getWidth() / 2 - 50, getHeight() / 2);
 		}
 	}
 
