@@ -3,9 +3,9 @@ import java.net.URL;
 import javax.sound.sampled.*;
    
 public enum SoundEffect {
-   WALL_BOUNCE("sfx/punch.wav"),   // explosion
+   WALL_BOUNCE("sfx/punch.wav"),
    PAD_BOUNCE("sfx/hitMetal.wav"),
-   SCORE("sfx/score.wav");         // gong
+   SCORE("sfx/score.wav");
    
    public static enum SFX {
       OFF, ON
