@@ -1,6 +1,8 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class PingPong {
 	private static PingPongPanel pingPongPanel;
@@ -29,7 +31,6 @@ public class PingPong {
 
 	private static class PingPongListener implements KeyListener {
 		boolean isPaused = false;	// Dani
-
 		
 		public void keyTyped(KeyEvent e) {
 		}

@@ -18,8 +18,6 @@ public class PingPongPanel extends JPanel {
 	private int stickStepTwo = 0;
 	private int firstPlayerResult = 0; // Lyudmil
 	private int secondPlayerResult = 0; // Lyudmil
-	private int currStepX;
-	private int currStepY;
 	public boolean isPaused = false;
 
 	@Override
@@ -36,8 +34,6 @@ public class PingPongPanel extends JPanel {
 		if(!isPaused){
 		ballStartX += this.ballStepX;
 		ballStartY += this.ballStepY;
-		currStepX = ballStartX;
-		currStepY = ballStartY;
 		
 		if (ballStartX + BALL_SIZE > getSize().getWidth()) {
 			ballStepX = -1;
