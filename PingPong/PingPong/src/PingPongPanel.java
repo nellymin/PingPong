@@ -22,7 +22,7 @@ public class PingPongPanel extends JPanel {
 	private int stickStepTwo = 0;
 	private int firstPlayerResult = 0; // Lyudmil
 	private int secondPlayerResult = 0; // Lyudmil
-	public boolean isPaused = false;
+	public boolean isPaused = false; // Dani
 
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -32,7 +32,10 @@ public class PingPongPanel extends JPanel {
 		g.fillRect((int) getSize().getWidth() - 6, stickTwoStart, 5, STICK_SIZE);
 		g.drawString("Player 1: " + firstPlayerResult, 5, 10); // Lyudmil
 		g.drawString("Player 2: " + secondPlayerResult, getWidth() - 60, 10); // Lyudmil
-		
+		showingMessageOnPause(g);
+	}
+
+	private void showingMessageOnPause(Graphics g) {
 		if (isPaused) {								
 			Font f = new Font("Dialog", Font.ITALIC, 20);					//	Dani
 			g.setFont(f);
@@ -130,8 +133,8 @@ public class PingPongPanel extends JPanel {
 	}
 	
 	private void win(int player) { // Niki 15
-		PingPong.isRunning = false;    
-		centeringTheSticks();
+		PingPong.isRunning = false; // Dani   
+		centeringTheSticks();  // Dani
 		String message = "Player " + player + " WIN!  \nplayer 1  | "
 				+ firstPlayerResult + " - " + secondPlayerResult
 				+ " |  player 2";
@@ -140,10 +143,10 @@ public class PingPongPanel extends JPanel {
 		// randomBallMovement();
 	}
 
-	private void centeringTheSticks() {
+	private void centeringTheSticks() { // Dani
 		setStickStep(0);
 		setStickStepTwo(0);
 		this.stickOneStart = 200;  // setting the sticks to start from the center
-		this.stickTwoStart = 200;  // Dani
+		this.stickTwoStart = 200;  
 	}
 }
