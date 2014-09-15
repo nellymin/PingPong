@@ -128,8 +128,7 @@ public class PingPongPanel extends JPanel {
 		this.stickStepTwo = step;
 	}
 
-	public void randomBallMovement() { // метод, който ще стартира топчето от
-										// центъра с random посока
+	public void randomBallMovement() { // 
 	}
 	
 	private void win(int player) { // Niki 15
