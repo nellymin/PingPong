@@ -18,6 +18,9 @@ public class PingPongPanel extends JPanel {
 	private int stickStepTwo = 0;
 	private int firstPlayerResult = 0; // Lyudmil
 	private int secondPlayerResult = 0; // Lyudmil
+	private int currStepX;
+	private int currStepY;
+	public boolean isPaused = false;
 
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -30,8 +33,12 @@ public class PingPongPanel extends JPanel {
 	}
 
 	public void moveBall() {
+		if(!isPaused){
 		ballStartX += this.ballStepX;
 		ballStartY += this.ballStepY;
+		currStepX = ballStartX;
+		currStepY = ballStartY;
+		
 		if (ballStartX + BALL_SIZE > getSize().getWidth()) {
 			ballStepX = -1;
 			if (ballStartY < stickTwoStart
@@ -79,6 +86,7 @@ public class PingPongPanel extends JPanel {
 			ballStepY = 1;
 			SoundEffect.WALL_BOUNCE.play();
 		}
+		}
 	}
 
 	public void moveStick() {
@@ -114,9 +122,9 @@ public class PingPongPanel extends JPanel {
 	public void randomBallMovement() { // метод, който ще стартира топчето от
 										// центъра с random посока
 	}
-
+	
 	private void win(int player) { // Niki 15
-
+		PingPong.isRunning = false;
 		String message = "Player " + player + " WIN!  \nplayer 1  | "
 				+ firstPlayerResult + " - " + secondPlayerResult
 				+ " |  player 2";

@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 public class PingPong {
 	private static PingPongPanel pingPongPanel;
 	private static JFrame frame;
+	public static boolean isRunning = false;
 
 	public static void main(String[] args) throws InterruptedException {
 		frame = new JFrame();
@@ -28,7 +29,7 @@ public class PingPong {
 
 	private static class PingPongListener implements KeyListener {
 		boolean isPaused = false;	// Dani
-		boolean isRunning = false; // Dani
+
 		
 		public void keyTyped(KeyEvent e) {
 		}
@@ -58,17 +59,12 @@ public class PingPong {
 				isRunning = true;
 				pingPongPanel.setStepX(1);
 				pingPongPanel.setStepY(1);
-			} else if (!isPaused && e.getKeyCode() == KeyEvent.VK_SPACE) {
+			} else if (isRunning && e.getKeyCode() == KeyEvent.VK_SPACE) {
 				// pause Dani
-				pingPongPanel.setStepX(0);
-				pingPongPanel.setStepY(0);
 				pingPongPanel.setStickStep(0);
 				pingPongPanel.setStickStepTwo(0);
-				isPaused = true;
-			}else if(isPaused && e.getKeyCode() == KeyEvent.VK_SPACE) {
-				pingPongPanel.setStepX(1);
-				pingPongPanel.setStepY(1);
-				isPaused = false;
+				pingPongPanel.isPaused = !pingPongPanel.isPaused;
+				isPaused = !isPaused;
 			}
 			else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 				frame.dispose(); // exit frame
