@@ -36,23 +36,20 @@ public class PingPong {
 		@Override
 		public void keyPressed(KeyEvent e) {
 			if (e.getKeyCode() == KeyEvent.VK_UP) {
-				pingPongPanel.setstickStep(-1);
-			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-				pingPongPanel.setstickStep(1);
-			} else if (e.getKeyCode() == KeyEvent.VK_S) {
-				pingPongPanel.setStickStepTwo(1);
-			} else if (e.getKeyCode() == KeyEvent.VK_W) {
 				pingPongPanel.setStickStepTwo(-1);
+			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+				pingPongPanel.setStickStepTwo(1);
+			} else if (e.getKeyCode() == KeyEvent.VK_S) {
+				pingPongPanel.setstickStep(1);
+			} else if (e.getKeyCode() == KeyEvent.VK_W) {
+				pingPongPanel.setstickStep(-1);
 			} else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-				//pingPongPanel.randomBallMovement();
-				pingPongPanel.setStepX(1); 
+				pingPongPanel.setStepX(1);
 				pingPongPanel.setStepY(1);
 			} else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 				// pause
 				pingPongPanel.setStepX(0);
 				pingPongPanel.setStepY(0);
-				//спиране на движението на стиковете
-				//подноваване на играта с предходната посока на движение на топчето
 			} else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 				frame.dispose(); // exit frame
 			}
