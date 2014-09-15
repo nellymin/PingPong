@@ -1,6 +1,5 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import javax.swing.JFrame;
 
 public class PingPong {
@@ -15,6 +14,7 @@ public class PingPong {
 		frame.add(pingPongPanel);
 		frame.setVisible(true);
 		frame.addKeyListener(new PingPongListener());
+		
 		@SuppressWarnings("unused")
 		MainMenu menu = new MainMenu();
 
@@ -36,20 +36,23 @@ public class PingPong {
 		@Override
 		public void keyPressed(KeyEvent e) {
 			if (e.getKeyCode() == KeyEvent.VK_UP) {
-				pingPongPanel.setStickOneMovement(-1);
+				pingPongPanel.setstickStep(-1);
 			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-				pingPongPanel.setStickOneMovement(1);
+				pingPongPanel.setstickStep(1);
 			} else if (e.getKeyCode() == KeyEvent.VK_S) {
-				pingPongPanel.setStickTwoMovement(1);
+				pingPongPanel.setStickStepTwo(1);
 			} else if (e.getKeyCode() == KeyEvent.VK_W) {
-				pingPongPanel.setStickTwoMovement(-1);
+				pingPongPanel.setStickStepTwo(-1);
 			} else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-				pingPongPanel.setStepX(1);
+				//pingPongPanel.randomBallMovement();
+				pingPongPanel.setStepX(1); 
 				pingPongPanel.setStepY(1);
 			} else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 				// pause
 				pingPongPanel.setStepX(0);
 				pingPongPanel.setStepY(0);
+				//спиране на движението на стиковете
+				//подноваване на играта с предходната посока на движение на топчето
 			} else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 				frame.dispose(); // exit frame
 			}
