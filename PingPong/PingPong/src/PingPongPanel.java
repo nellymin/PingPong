@@ -1,5 +1,6 @@
 import java.awt.Graphics;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class PingPongPanel extends JPanel {
@@ -36,6 +37,8 @@ public class PingPongPanel extends JPanel {
 			if (ballStartY < stickTwoStart
 					|| ballStartY > stickTwoStart + STICK_SIZE)
 				firstPlayerResult++;
+				win(1);
+				// мини задача: за по- добър визуален ефект топчето да излиза извън очертанието на полето.
 		}
 
 		if (ballStartX < 0) {
@@ -43,6 +46,7 @@ public class PingPongPanel extends JPanel {
 			if (ballStartY < stickOneStart
 					|| ballStartY > stickOneStart + STICK_SIZE)
 				secondPlayerResult++;
+				win(2);
 		}
 
 		if (ballStartY + BALL_SIZE > getSize().getHeight()) {
@@ -76,11 +80,21 @@ public class PingPongPanel extends JPanel {
 		this.ballStepY = stepY;
 	}
 
-	public void setStickOneMovement(int step) {
+	public void setstickStep(int step) {
 		this.stickStep = step;
 	}
 
-	public void setStickTwoMovement(int step) {
+	public void setStickStepTwo(int step) {
 		this.stickStepTwo = step;
+	}
+	
+	public void randomBallMovement(){ // метод, който ще стартира топчето от центъра с random посока 
+	}
+	
+	private void win(int player){ // Niki 15
+		
+		String message = "Player "+ player +" WIN!  \nplayer 1  | " + firstPlayerResult+" - "+secondPlayerResult+" |  player 2";
+		JOptionPane.showMessageDialog(null, message, "PiNg PoNg reSult", JOptionPane.WARNING_MESSAGE);
+		// randomBallMovement();
 	}
 }
