@@ -27,6 +27,9 @@ public class PingPong {
 	}
 
 	private static class PingPongListener implements KeyListener {
+		boolean isPaused = false;	// Dani
+		boolean isRunning = false; // Dani
+		
 		public void keyTyped(KeyEvent e) {
 		}
 
@@ -43,22 +46,31 @@ public class PingPong {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			if (e.getKeyCode() == KeyEvent.VK_UP) {
+			if (!isPaused && e.getKeyCode() == KeyEvent.VK_UP) {
 				pingPongPanel.setStickStepTwo(-1);
-			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			} else if (!isPaused && e.getKeyCode() == KeyEvent.VK_DOWN) {
 				pingPongPanel.setStickStepTwo(1);
-			} else if (e.getKeyCode() == KeyEvent.VK_S) {
+			} else if (!isPaused && e.getKeyCode() == KeyEvent.VK_S) {
 				pingPongPanel.setStickStep(1);
-			} else if (e.getKeyCode() == KeyEvent.VK_W) {
+			} else if (!isPaused && e.getKeyCode() == KeyEvent.VK_W) {
 				pingPongPanel.setStickStep(-1);
-			} else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			} else if (!isRunning && !isPaused && e.getKeyCode() == KeyEvent.VK_ENTER) {
+				isRunning = true;
 				pingPongPanel.setStepX(1);
 				pingPongPanel.setStepY(1);
-			} else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-				// pause
+			} else if (!isPaused && e.getKeyCode() == KeyEvent.VK_SPACE) {
+				// pause Dani
 				pingPongPanel.setStepX(0);
 				pingPongPanel.setStepY(0);
-			} else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+				pingPongPanel.setStickStep(0);
+				pingPongPanel.setStickStepTwo(0);
+				isPaused = true;
+			}else if(isPaused && e.getKeyCode() == KeyEvent.VK_SPACE) {
+				pingPongPanel.setStepX(1);
+				pingPongPanel.setStepY(1);
+				isPaused = false;
+			}
+			else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 				frame.dispose(); // exit frame
 			}
 		}
