@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 public class PingPong {
 	private static PingPongPanel pingPongPanel;
 	private static JFrame frame;
-	public static boolean isRunning = false;
+	private static boolean isRunning = false;
 
 	public static void main(String[] args) throws InterruptedException {
 		frame = new JFrame();
@@ -24,6 +24,7 @@ public class PingPong {
 		while (true) {
 			Thread.sleep(3);
 			pingPongPanel.moveBall();
+			
 			pingPongPanel.moveStick();
 			pingPongPanel.repaint();
 		}
@@ -64,12 +65,20 @@ public class PingPong {
 				// pause Dani
 				pingPongPanel.setStickStep(0);
 				pingPongPanel.setStickStepTwo(0);
-				pingPongPanel.isPaused = !pingPongPanel.isPaused;
+				pingPongPanel.setPaused(!pingPongPanel.isPaused());
 				isPaused = !isPaused;
 			}
 			else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 				frame.dispose(); // exit frame
 			}
 		}
+	}
+	
+	public static boolean isRunning() {
+		return isRunning;
+	}
+
+	public static void setRunning(boolean isRunning) {
+		PingPong.isRunning = isRunning;
 	}
 }
