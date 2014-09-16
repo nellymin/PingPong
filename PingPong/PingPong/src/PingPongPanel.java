@@ -125,7 +125,7 @@ public class PingPongPanel extends JPanel {
 		this.stickStepTwo = step;
 	}
 	
-	public boolean isPaused() {
+	public boolean getPaused() {
 		return isPaused;
 	}
 
@@ -138,7 +138,7 @@ public class PingPongPanel extends JPanel {
 	}
 	
 	private void win(int player) { // Niki 15
-		PingPong.setRunning(!PingPong.isRunning()); // Dani   
+		PingPong.setRunning(!PingPong.getRunning()); // Dani   
 		centeringStickAndBall();  // Dani
 		String message = "Player " + player + " WIN!  \nplayer 1  | "
 				+ firstPlayerResult + " - " + secondPlayerResult

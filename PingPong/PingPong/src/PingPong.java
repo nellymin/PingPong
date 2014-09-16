@@ -65,7 +65,7 @@ public class PingPong {
 				// pause Dani
 				pingPongPanel.setStickStep(0);
 				pingPongPanel.setStickStepTwo(0);
-				pingPongPanel.setPaused(!pingPongPanel.isPaused());
+				pingPongPanel.setPaused(!pingPongPanel.getPaused());
 				isPaused = !isPaused;
 			}
 			else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
@@ -74,7 +74,7 @@ public class PingPong {
 		}
 	}
 	
-	public static boolean isRunning() {
+	public static boolean getRunning() {
 		return isRunning;
 	}
 
