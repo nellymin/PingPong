@@ -174,10 +174,10 @@ public class PingPongPanel extends JPanel {
 	public void moveAIPaddle() {
 		AISpeed++;
 		if (AISpeed > 20){
-			if (ballY < stickTwoY - 30) {
+			if (ballY < stickTwoY - 40) {
 				stickTwoStep = -1;
 			}
-			else if (ballY > stickTwoY + STICK_SIZE - 30) {
+			else if (ballY > stickTwoY + STICK_SIZE - 40) {
 				stickTwoStep = 1;
 			}
 			else if (ballY == stickTwoY + STICK_SIZE / 2 - 15) {
