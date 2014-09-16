@@ -32,17 +32,14 @@ public class PingPongPanel extends JPanel {
 		g.fillRect((int) getSize().getWidth() - 6, stickTwoStart, 5, STICK_SIZE);
 		g.drawString("Player 1: " + firstPlayerResult, 5, 10); // Lyudmil
 		g.drawString("Player 2: " + secondPlayerResult, getWidth() - 60, 10); // Lyudmil
-		showingMessageOnPause(g);
-	}
-
-	private void showingMessageOnPause(Graphics g) {
+		
 		if (isPaused) {								
 			Font f = new Font("Dialog", Font.ITALIC, 20);					//	Dani
 			g.setFont(f);
 			g.drawString("PAUSED", getWidth() / 2 - 50, getHeight() / 2);
 		}
 	}
-
+	
 	public void moveBall() {
 		if(!isPaused){
 		ballStartX += this.ballStepX;
