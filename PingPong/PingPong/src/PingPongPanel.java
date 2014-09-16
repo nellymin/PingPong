@@ -185,13 +185,12 @@ public class PingPongPanel extends JPanel {
 	}
 
 	void centeringStickAndBall() { // Dani
-		ballX = 380;
+		ballX = 380;  
 		ballY = 250;
 		randomBallMovement();
 		setStickStep(0);
 		setStickStepTwo(0);
 		this.stickOneY = getHeight() / 2 - 80; // setting the sticks to start
-												// from the center
 		this.stickTwoY = getHeight() / 2 - 80;
 	}
 }
