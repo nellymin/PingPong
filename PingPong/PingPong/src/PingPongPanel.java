@@ -165,7 +165,7 @@ public class PingPongPanel extends JPanel {
 				stickSectionCoord[i] = i * sectionSize + stickOneY;
 			}
 		}
-		for (int i = 0; i < steps; i++) {
+		for (int i = 0; i < steps - 1; i++) {
 			if (ballY > stickSectionCoord[i] &&
 					ballY < stickSectionCoord[i + 1]) {
 				ballStepY = ySteps[i];
