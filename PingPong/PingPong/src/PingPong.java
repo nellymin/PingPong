@@ -56,8 +56,9 @@ public class PingPong {
 				pingPongPanel.setStickStep(-1);
 			} else if (!isRunning && !isPaused && e.getKeyCode() == KeyEvent.VK_ENTER) {
 				isRunning = true;
-				pingPongPanel.setStepX(1);
-				pingPongPanel.setStepY(1);
+				pingPongPanel.randomBallMovement();
+//				pingPongPanel.setStepX(1);
+//				pingPongPanel.setStepY(1);
 			} else if (isRunning && e.getKeyCode() == KeyEvent.VK_SPACE) {
 				// pause Dani
 				pingPongPanel.setStickStep(0);
