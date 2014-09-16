@@ -75,15 +75,24 @@ public class PingPongPanel extends JPanel {
 	}
 
 	public void moveStick() {
-		this.stickOneY += this.stickOneStep;
-		if (stickOneY <= 1 || stickOneY >= getSize().getHeight() - STICK_SIZE) { // Niki
-			// 14
-			this.stickOneStep = 0; // Niki 14
+		if (stickOneY < 1) {
+			stickOneY = 1;
+			this.stickOneStep = 0;
+		} 
+		if (stickOneY + STICK_SIZE >= getHeight()) {
+			stickOneY = getHeight() - (STICK_SIZE + 1);
+			this.stickOneStep = 0;
 		}
-		this.stickTwoY += this.stickTwoStep;
-		if (stickTwoY <= 1 || stickTwoY >= getSize().getHeight() - STICK_SIZE) {
+		this.stickOneY += this.stickOneStep;
+		if (stickTwoY < 1) {
+			stickTwoY = 1;
+			this.stickTwoStep = 0;
+		} 
+		if (stickTwoY + STICK_SIZE >= getHeight()) {
+			stickTwoY = getHeight() - (STICK_SIZE + 1);
 			this.stickTwoStep = 0;
 		}
+		this.stickTwoY += this.stickTwoStep;
 	}
 
 	public void setStepX(int stepX) {

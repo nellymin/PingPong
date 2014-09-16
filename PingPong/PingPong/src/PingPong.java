@@ -54,7 +54,7 @@ public class PingPong {
 				} else if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_DOWN) {
 					pingPongPanel.setStickStepTwo(2);
 					} 
-			}else if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_S) {
+			} else if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_S) {
 				pingPongPanel.setStickStep(2);
 			} else if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_W) {
 				pingPongPanel.setStickStep(-2);
