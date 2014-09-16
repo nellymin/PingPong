@@ -10,6 +10,7 @@ public class PingPongPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private static final int BALL_SIZE = 25;
 	private static final int STICK_SIZE = 100;
+	private static final int STEPS = 5;
 	private int ballX = 380; // Lyudmil
 	private int ballY = 250; // Lyudmil
 	private int ballStepX = 0;
@@ -132,29 +133,28 @@ public class PingPongPanel extends JPanel {
 	}
 
 	private void setBallStepXY() {
-		int steps = 5;
-		int[] stickSectionCoord = new int[steps];
-		int[] ySteps = new int[steps];
-		for (int i = 0; i < steps; i++) {
-			ySteps[i] = i <= steps / 2 ? (steps / 2 - i) * -1 : i - steps / 2;
+		int[] stickSectionCoord = new int[STEPS];
+		int[] ySteps = new int[STEPS];
+		for (int i = 0; i < STEPS; i++) {
+			ySteps[i] = i <= STEPS / 2 ? (STEPS / 2 - i) * -1 : i - STEPS / 2;
 		}
 		int sectionSize = STICK_SIZE / stickSectionCoord.length;
 
 		if (ballStepX == 1) {
 			// stickTwoY
-			for (int i = 1; i < steps; i++) {
+			for (int i = 0; i < STEPS; i++) {
 				// initialize array with the coordinates of stick sectors
 				stickSectionCoord[i] = i * sectionSize + stickTwoY;
 			}
 		} else {
 			// initialize array with the coordinates of stick sectors
-			for (int i = 1; i < steps; i++) {
+			for (int i = 0; i < STEPS; i++) {
 				stickSectionCoord[i] = i * sectionSize + stickOneY;
 			}
 		}
-		for (int i = 0; i < steps - 1; i++) {
-			if (ballY > stickSectionCoord[i]
-					&& ballY < stickSectionCoord[i + 1]) {
+		for (int i = 0; i < STEPS - 1; i++) {
+			if (ballY + (BALL_SIZE / 2) > stickSectionCoord[i]
+					&& ballY + (BALL_SIZE / 2) < stickSectionCoord[i + 1]) {
 				ballStepY = ySteps[i];
 				ballStepX *= -1;
 				break;
