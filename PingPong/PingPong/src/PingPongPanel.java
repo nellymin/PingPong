@@ -42,8 +42,7 @@ public class PingPongPanel extends JPanel {
 	public void moveBall() {
 		if (!isPaused) {
 			if (ballX + BALL_SIZE > getSize().getWidth() - 5) {
-				if (ballY < stickTwoY || ballY > stickTwoY + STICK_SIZE) {
-					SoundEffect.SCORE.play();
+				if (ballY + BALL_SIZE / 2 < stickTwoY || ballY + BALL_SIZE / 2 > stickTwoY + STICK_SIZE) {
 					firstPlayerResult++;
 					win(1);
 				} else {
@@ -56,8 +55,7 @@ public class PingPongPanel extends JPanel {
 			}
 
 			if (ballX < 5) {
-				if (ballY < stickOneY || ballY > stickOneY + STICK_SIZE) {
-					SoundEffect.SCORE.play();
+				if (ballY + BALL_SIZE / 2 < stickOneY || ballY + BALL_SIZE / 2 > stickOneY + STICK_SIZE) {
 					secondPlayerResult++;
 					win(2);
 				} else {
@@ -121,6 +119,7 @@ public class PingPongPanel extends JPanel {
 	}
 
 	private void win(int player) { // Niki 15
+		SoundEffect.SCORE.play();
 		PingPong.setRunning(!PingPong.getRunning()); // Dani
 		centeringStickAndBall(); // Dani
 		setStepX(0);
