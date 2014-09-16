@@ -24,7 +24,6 @@ public class PingPong {
 		while (true) {
 			Thread.sleep(3);
 			pingPongPanel.moveBall();
-			
 			pingPongPanel.moveStick();
 			pingPongPanel.repaint();
 		}
