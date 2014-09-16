@@ -48,10 +48,12 @@ public class PingPong {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_UP) {
-				pingPongPanel.setStickStepTwo(-1);
-			} else if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_DOWN) {
-				pingPongPanel.setStickStepTwo(1);
+			if (!MainMenu.singlePlayer) {
+				if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_UP) {
+					pingPongPanel.setStickStepTwo(-1);
+				} else if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_DOWN) {
+					pingPongPanel.setStickStepTwo(1);
+			}
 			} else if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_S) {
 				pingPongPanel.setStickStep(1);
 			} else if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_W) {

@@ -88,7 +88,6 @@ public class PingPongPanel extends JPanel {
 			// 14
 			this.stickOneStep = 0; // Niki 14
 		}
-		if (!MainMenu.singlePlayer)
 			this.stickTwoY += this.stickTwoStep;
 		if (stickTwoY <= 1
 				|| stickTwoY >= getSize().getHeight() - STICK_SIZE) {
@@ -172,17 +171,14 @@ public class PingPongPanel extends JPanel {
 	}
 	
 	public void moveAIPaddle() {
-		//Random r = new Random();
-		//int low = 10;
-		//int high = 100;
-		//int rndNumber = r.nextInt(high - low) + low;
-		int rndNumber = 80;
-		if (rndNumber <= 80) {
-			if (ballX > 0 && ballY > 0) {
-				MoveSecondPlayerUp();
-			} else {
-				MoveSecondPlayerDown();
-			}
+		if (ballY < stickTwoY) {
+			stickTwoStep = -1;
+		}
+		else if (ballY > stickTwoY + STICK_SIZE) {
+			stickTwoStep = 1;
+		}
+		else if (ballY == stickTwoY + STICK_SIZE / 2) {
+			stickTwoStep = 0;
 		}
 	}
 
