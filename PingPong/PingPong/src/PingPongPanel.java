@@ -83,6 +83,9 @@ public class PingPongPanel extends JPanel {
 				ballStepY *= -1;
 				SoundEffect.WALL_BOUNCE.play();
 			}
+			
+			if (MainMenu.singlePlayer)
+				moveAIPaddle();
 		}
 	}
 
@@ -93,9 +96,7 @@ public class PingPongPanel extends JPanel {
 			// 14
 			this.stickOneStep = 0; // Niki 14
 		}
-		if (MainMenu.singlePlayer)
-			moveAIPaddle();
-		else
+		if (!MainMenu.singlePlayer)
 			this.stickTwoY += this.stickTwoStep;
 		if (stickTwoY <= 1
 				|| stickTwoY >= getSize().getHeight() - STICK_SIZE) {
