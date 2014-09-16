@@ -43,7 +43,7 @@ public class PingPongPanel extends JPanel {
 	
 	public void moveBall() {
 		if(!isPaused){			
-			if (ballX + BALL_SIZE >= getSize().getWidth()) {
+			if (ballX + BALL_SIZE > getSize().getWidth()) {
 				if (ballY < stickTwoY
 						|| ballY > stickTwoY + STICK_SIZE) {
 					SoundEffect.SCORE.play();
@@ -58,7 +58,7 @@ public class PingPongPanel extends JPanel {
 				// очертанието на полето.
 			}
 	
-			if (ballX <= 0) {
+			if (ballX < 0) {
 				if (ballY < stickOneY
 						|| ballY > stickOneY + STICK_SIZE) {
 					SoundEffect.SCORE.play();
@@ -82,17 +82,17 @@ public class PingPongPanel extends JPanel {
 	}
 
 	public void moveStick() {
+		this.stickOneY += this.stickOneStep;
 		if (stickOneY <= 1
 				|| stickOneY >= getSize().getHeight() - STICK_SIZE) { // Niki
+			// 14
 			this.stickOneStep = 0; // Niki 14
 		}
-		this.stickOneY += this.stickOneStep;
-		
+			this.stickTwoY += this.stickTwoStep;
 		if (stickTwoY <= 1
 				|| stickTwoY >= getSize().getHeight() - STICK_SIZE) {
 			this.stickTwoStep = 0;
 		}
-		this.stickTwoY += this.stickTwoStep;
 	}
 
 	public void setStepX(int stepX) {
@@ -134,7 +134,7 @@ public class PingPongPanel extends JPanel {
 		String message = "Player " + player + " WIN!  \nplayer 1  | "
 				+ firstPlayerResult + " - " + secondPlayerResult
 				+ " |  player 2";
-		JOptionPane.showMessageDialog(null, message, "Ping Pong Result",
+		JOptionPane.showMessageDialog(null, message, "PiNg PoNg reSult",
 				JOptionPane.WARNING_MESSAGE);
 	}
 	
@@ -149,19 +149,19 @@ public class PingPongPanel extends JPanel {
 		
 		if (ballStepX == 1) {
 			//stickTwoY
-			for (int i = 0; i < steps; i++) {
+			for (int i = 1; i < steps; i++) {
 				//initialize array with the coordinates of stick sectors
 				stickSectionCoord[i] = i * sectionSize + stickTwoY;
 			}
 		}
 		else {
 			//initialize array with the coordinates of stick sectors
-			for (int i = 0; i < steps; i++) {
+			for (int i = 1; i < steps; i++) {
 				stickSectionCoord[i] = i * sectionSize + stickOneY;
 			}
 		}
 		for (int i = 0; i < steps - 1; i++) {
-			if (ballY >= stickSectionCoord[i] &&
+			if (ballY > stickSectionCoord[i] &&
 					ballY < stickSectionCoord[i + 1]) {
 				ballStepY = ySteps[i];
 				ballStepX *= -1;
@@ -171,17 +171,16 @@ public class PingPongPanel extends JPanel {
 	}
 	
 	private int AISpeed = 0;
-	public void moveAIStick() {
+	public void moveAIPaddle() {
 		AISpeed++;
 		if (AISpeed > 20){
-			AISpeed = 0;
-			if (ballY < stickTwoY) {
-				stickTwoStep = -2;
+			if (ballY < stickTwoY - 30) {
+				stickTwoStep = -1;
 			}
-			else if (ballY > stickTwoY + STICK_SIZE) {
-				stickTwoStep = 2;
+			else if (ballY > stickTwoY + STICK_SIZE - 30) {
+				stickTwoStep = 1;
 			}
-			else if (ballY == stickTwoY + STICK_SIZE / 2) {
+			else if (ballY == stickTwoY + STICK_SIZE / 2 - 15) {
 				stickTwoStep = 0;
 			}
 		}
