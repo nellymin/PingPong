@@ -10,7 +10,7 @@ public class PingPongPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private static final int BALL_SIZE = 25;
 	private static final int STICK_SIZE = 100;
-	private static final int STEPS = 5;
+	private static final int STEPS = 7;
 	private int ballX = 380; // Lyudmil
 	private int ballY = 250; // Lyudmil
 	private int ballStepX = 0;
@@ -41,7 +41,7 @@ public class PingPongPanel extends JPanel {
 
 	public void moveBall() {
 		if (!isPaused) {
-			if (ballX + BALL_SIZE > getSize().getWidth()) {
+			if (ballX + BALL_SIZE > getSize().getWidth() - 5) {
 				if (ballY < stickTwoY || ballY > stickTwoY + STICK_SIZE) {
 					SoundEffect.SCORE.play();
 					firstPlayerResult++;
@@ -55,7 +55,7 @@ public class PingPongPanel extends JPanel {
 				// очертанието на полето.
 			}
 
-			if (ballX < 0) {
+			if (ballX < 5) {
 				if (ballY < stickOneY || ballY > stickOneY + STICK_SIZE) {
 					SoundEffect.SCORE.play();
 					secondPlayerResult++;
