@@ -127,10 +127,6 @@ public class PingPongPanel extends JPanel {
 		this.isPaused = isPaused;
 	}
 
-	public void randomBallMovement() { // метод, който ще стартира топчето от
-										// центъра с random посока
-	}
-	
 	private void win(int player) { // Niki 15
 		PingPong.setRunning(!PingPong.getRunning()); // Dani   
 		centeringStickAndBall();  // Dani
