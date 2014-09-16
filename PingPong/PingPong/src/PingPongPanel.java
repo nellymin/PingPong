@@ -56,10 +56,7 @@ public class PingPongPanel extends JPanel {
 				firstPlayerResult++;
 				win(1);
 				// Nelly 
-				ballStartX = 380;
-				ballStartY = 250;
-				ballStepX=0;
-				ballStepY=0;
+				centeringStickAndBall(); // Dani
 				// Nelly
 			}
 			else
@@ -142,7 +139,7 @@ public class PingPongPanel extends JPanel {
 	
 	private void win(int player) { // Niki 15
 		PingPong.setRunning(!PingPong.isRunning()); // Dani   
-		centeringTheSticks();  // Dani
+		centeringStickAndBall();  // Dani
 		String message = "Player " + player + " WIN!  \nplayer 1  | "
 				+ firstPlayerResult + " - " + secondPlayerResult
 				+ " |  player 2";
@@ -151,7 +148,11 @@ public class PingPongPanel extends JPanel {
 		// randomBallMovement();
 	}
 
-	private void centeringTheSticks() { // Dani
+	private void centeringStickAndBall() { // Dani
+		ballStartX = 380;
+		ballStartY = 250;
+		ballStepX=0;
+		ballStepY=0;
 		setStickStep(0);
 		setStickStepTwo(0);
 		this.stickOneStart = 200;  // setting the sticks to start from the center
