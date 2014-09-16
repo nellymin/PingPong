@@ -11,7 +11,7 @@ public enum SoundEffect {
       OFF, ON
    }
    
-   public static SFX sfx = SFX.ON;
+   public static SFX sfx = SFX.OFF;
    
    // Each sound effect has its own clip, loaded with its own sound file.
    private Clip clip;

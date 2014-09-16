@@ -25,7 +25,7 @@ public class PingPong {
 			pingPongPanel.moveStick();
 			pingPongPanel.repaint();
 			if (MainMenu.singlePlayer)
-				pingPongPanel.moveAIPaddle();
+				pingPongPanel.moveAIStick();
 		}
 	}
 
