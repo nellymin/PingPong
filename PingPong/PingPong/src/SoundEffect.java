@@ -38,6 +38,7 @@ public enum SoundEffect {
             clip.stop();   // Stop the player if it is still running
          clip.setFramePosition(0); // rewind to the beginning
          clip.start();     // Start playing
+         clip.flush();
       }
    }
    
