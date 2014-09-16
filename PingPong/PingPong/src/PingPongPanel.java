@@ -22,7 +22,7 @@ public class PingPongPanel extends JPanel {
 	private int stickStepTwo = 0;
 	private int firstPlayerResult = 0; // Lyudmil
 	private int secondPlayerResult = 0; // Lyudmil
-	public boolean isPaused = false; // Dani
+	private boolean isPaused = false; // Dani
 
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -127,12 +127,21 @@ public class PingPongPanel extends JPanel {
 	public void setStickStepTwo(int step) {
 		this.stickStepTwo = step;
 	}
+	
+	public boolean isPaused() {
+		return isPaused;
+	}
 
-	public void randomBallMovement() { // 
+	public void setPaused(boolean isPaused) {
+		this.isPaused = isPaused;
+	}
+
+	public void randomBallMovement() { // метод, който ще стартира топчето от
+										// центъра с random посока
 	}
 	
 	private void win(int player) { // Niki 15
-		PingPong.isRunning = false; // Dani   
+		PingPong.setRunning(!PingPong.isRunning()); // Dani   
 		centeringTheSticks();  // Dani
 		String message = "Player " + player + " WIN!  \nplayer 1  | "
 				+ firstPlayerResult + " - " + secondPlayerResult
