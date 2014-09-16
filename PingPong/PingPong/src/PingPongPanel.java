@@ -1,5 +1,10 @@
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.image.ImageObserver;
+import java.util.Random;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -19,7 +24,6 @@ public class PingPongPanel extends JPanel {
 	private int firstPlayerResult = 0; // Lyudmil
 	private int secondPlayerResult = 0; // Lyudmil
 	private boolean isPaused = false; // Dani
-	
 
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -67,10 +71,7 @@ public class PingPongPanel extends JPanel {
 				secondPlayerResult++;
 				win(2);
 				// Nelly
-				ballStartX = 380;
-				ballStartY = 250;
-				ballStepX=0;
-				ballStepY=0;
+				centeringStickAndBall(); // Dani
 				//Nelly
 			}
 			else
@@ -127,6 +128,16 @@ public class PingPongPanel extends JPanel {
 		this.isPaused = isPaused;
 	}
 
+	public void randomBallMovement() { // метод, който ще стартира топчето оfт  центъра с random посока
+		int[] sideX = {1, -1};
+		int[] sideY = {1, -1};
+		Random rand = new Random();
+		int randomNum = rand.nextInt(2);
+		int randomNum2 = rand.nextInt(2);
+		setStepX(sideX[randomNum]);
+		setStepY(sideY[randomNum2]);
+	}
+	
 	private void win(int player) { // Niki 15
 		PingPong.setRunning(!PingPong.getRunning()); // Dani   
 		centeringStickAndBall();  // Dani
@@ -135,14 +146,12 @@ public class PingPongPanel extends JPanel {
 				+ " |  player 2";
 		JOptionPane.showMessageDialog(null, message, "PiNg PoNg reSult",
 				JOptionPane.WARNING_MESSAGE);
-		// randomBallMovement();
 	}
 
 	private void centeringStickAndBall() { // Dani
 		ballStartX = 380;
 		ballStartY = 250;
-		ballStepX=0;
-		ballStepY=0;
+		randomBallMovement();
 		setStickStep(0);
 		setStickStepTwo(0);
 		this.stickOneStart = 200;  // setting the sticks to start from the center
