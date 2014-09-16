@@ -50,14 +50,14 @@ public class PingPong {
 		public void keyPressed(KeyEvent e) {
 			if (!MainMenu.singlePlayer) {
 				if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_UP) {
-					pingPongPanel.setStickStepTwo(-1);
+					pingPongPanel.setStickStepTwo(-2);
 				} else if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_DOWN) {
-					pingPongPanel.setStickStepTwo(1);
-			}
-			} else if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_S) {
-				pingPongPanel.setStickStep(1);
+					pingPongPanel.setStickStepTwo(2);
+					} 
+			}else if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_S) {
+				pingPongPanel.setStickStep(2);
 			} else if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_W) {
-				pingPongPanel.setStickStep(-1);
+				pingPongPanel.setStickStep(-2);
 			} else if (!isRunning && !isPaused && e.getKeyCode() == KeyEvent.VK_ENTER) {
 				isRunning = true;
 				pingPongPanel.centeringStickAndBall();

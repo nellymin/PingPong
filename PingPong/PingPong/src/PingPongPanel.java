@@ -42,10 +42,7 @@ public class PingPongPanel extends JPanel {
 	}
 	
 	public void moveBall() {
-		if(!isPaused){
-			ballX += this.ballStepX;
-			ballY += this.ballStepY;
-			
+		if(!isPaused){			
 			if (ballX + BALL_SIZE > getSize().getWidth()) {
 				if (ballY < stickTwoY
 						|| ballY > stickTwoY + STICK_SIZE) {
@@ -78,6 +75,9 @@ public class PingPongPanel extends JPanel {
 				ballStepY *= -1;
 				SoundEffect.WALL_BOUNCE.play();
 			}
+
+			ballX += this.ballStepX;
+			ballY += this.ballStepY;
 		}
 	}
 
@@ -149,14 +149,14 @@ public class PingPongPanel extends JPanel {
 		
 		if (ballStepX == 1) {
 			//stickTwoY
-			for (int i = 0; i < steps; i++) {
+			for (int i = 1; i < steps; i++) {
 				//initialize array with the coordinates of stick sectors
 				stickSectionCoord[i] = i * sectionSize + stickTwoY;
 			}
 		}
 		else {
 			//initialize array with the coordinates of stick sectors
-			for (int i = 0; i < steps; i++) {
+			for (int i = 1; i < steps; i++) {
 				stickSectionCoord[i] = i * sectionSize + stickOneY;
 			}
 		}
@@ -170,27 +170,19 @@ public class PingPongPanel extends JPanel {
 		}
 	}
 	
+	private int AISpeed = 0;
 	public void moveAIPaddle() {
-		if (ballY < stickTwoY) {
-			stickTwoStep = -1;
-		}
-		else if (ballY > stickTwoY + STICK_SIZE) {
-			stickTwoStep = 1;
-		}
-		else if (ballY == stickTwoY + STICK_SIZE / 2) {
-			stickTwoStep = 0;
-		}
-	}
-
-	private void MoveSecondPlayerDown() {
-		if (stickTwoY < getHeight() - STICK_SIZE) {
-			stickTwoStep = 1;
-		}
-	}
-
-	private void MoveSecondPlayerUp() {
-		if (stickTwoY > 0) {
-			stickTwoStep = -1;
+		AISpeed++;
+		if (AISpeed > 20){
+			if (ballY < stickTwoY) {
+				stickTwoStep = -1;
+			}
+			else if (ballY > stickTwoY + STICK_SIZE) {
+				stickTwoStep = 1;
+			}
+			else if (ballY == stickTwoY + STICK_SIZE / 2) {
+				stickTwoStep = 0;
+			}
 		}
 	}
 
