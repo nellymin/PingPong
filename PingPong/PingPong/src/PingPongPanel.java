@@ -53,9 +53,6 @@ public class PingPongPanel extends JPanel {
 				SoundEffect.SCORE.play();
 				firstPlayerResult++;
 				win(1);
-				// Nelly 
-				//centeringStickAndBall(); // Dani
-				// Nelly
 			}
 			else
 				SoundEffect.PAD_BOUNCE.play();
@@ -70,9 +67,6 @@ public class PingPongPanel extends JPanel {
 				SoundEffect.SCORE.play();
 				secondPlayerResult++;
 				win(2);
-				// Nelly
-				//centeringStickAndBall(); // Dani
-				//Nelly
 			}
 			else
 				SoundEffect.PAD_BOUNCE.play();
@@ -145,7 +139,6 @@ public class PingPongPanel extends JPanel {
 				+ " |  player 2";
 		JOptionPane.showMessageDialog(null, message, "PiNg PoNg reSult",
 				JOptionPane.WARNING_MESSAGE);
-		//randomBallMovement();
 	}
 
 	void centeringStickAndBall() { // Dani
