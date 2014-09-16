@@ -74,18 +74,10 @@ public class PingPongPanel extends JPanel {
 				}
 			}
 		
-			if (ballY + BALL_SIZE > getSize().getHeight()) {
+			if (ballY + BALL_SIZE > getSize().getHeight() || ballY < 0) {
 				ballStepY *= -1;
 				SoundEffect.WALL_BOUNCE.play();
 			}
-		
-			if (ballY < 0) {
-				ballStepY *= -1;
-				SoundEffect.WALL_BOUNCE.play();
-			}
-			
-			if (MainMenu.singlePlayer)
-				moveAIPaddle();
 		}
 	}
 
@@ -180,10 +172,11 @@ public class PingPongPanel extends JPanel {
 	}
 	
 	public void moveAIPaddle() {
-		Random r = new Random();
-		int low = 10;
-		int high = 100;
-		int rndNumber = r.nextInt(high - low) + low;
+		//Random r = new Random();
+		//int low = 10;
+		//int high = 100;
+		//int rndNumber = r.nextInt(high - low) + low;
+		int rndNumber = 80;
 		if (rndNumber <= 80) {
 			if (ballX > 0 && ballY > 0) {
 				MoveSecondPlayerUp();
@@ -195,7 +188,7 @@ public class PingPongPanel extends JPanel {
 
 	private void MoveSecondPlayerDown() {
 		if (stickTwoY < getHeight() - STICK_SIZE) {
-			stickOneStep = 1;
+			stickTwoStep = 1;
 		}
 	}
 
