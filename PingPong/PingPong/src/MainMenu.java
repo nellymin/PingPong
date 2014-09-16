@@ -2,79 +2,83 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 
 public final class MainMenu extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	int screenWidth = 400;
+	int screenWidth = 500;
 	int screenHeight = 200;
-
-	int buttonWidth = 80;
+	int buttonWidth = 90;
 	int buttonHeight = 40;
 
-	JButton Play, Quit;
-	JCheckBox twoPlayer;
+	JButton Play, Multiplay, Quit;
 
 	public MainMenu() {
 		addButtons();
 		addActions();
 		getContentPane().setLayout(null);
 		Play.setBounds((screenWidth - buttonWidth) / 2, 5, buttonWidth,
-				buttonHeight); // Position the Play button
-		Quit.setBounds((screenWidth - buttonWidth) / 2, 50, buttonWidth,
-				buttonHeight); // Position the Quit button
-		twoPlayer.setBounds((screenWidth - buttonWidth) / 2, 95,
-				buttonWidth * 2, buttonHeight); // Position the twoPlayer
-												// checkbox
+				buttonHeight);
+		Multiplay.setBounds((screenWidth - buttonWidth) / 2, 50, buttonWidth,
+				buttonHeight);
+		Quit.setBounds((screenWidth - buttonWidth) / 2, 95, buttonWidth,
+				buttonHeight);
+
 		// Adding buttons
 		getContentPane().add(Play); // Add the button to the JFrame
+		getContentPane().add(Multiplay); // Add the button to the JFrame
 		getContentPane().add(Quit); // Add the button to the JFrame
-		getContentPane().add(twoPlayer); // Add the checkbox to the JFrame
 
 		// Creating the JFrame
 		pack();
 		setVisible(true);
 		setLocationRelativeTo(null);
 		setSize(screenWidth, screenHeight);
-		setTitle("Pong Menu");
+		setTitle("Ping Pong Menu");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setResizable(true);
+		setResizable(false);
 	}
 
 	private void addButtons() {
 		Play = new JButton("Play");
+		Multiplay = new JButton("Multiplay");
 		Quit = new JButton("Quit");
-		twoPlayer = new JCheckBox("Two Players?");
+
 	}
 
 	private void addActions() {
 
-		Play.addActionListener(new ActionListener() { // Take Play button, add
-														// new actionlistener
-			public void actionPerformed(ActionEvent e) { // Turn the action
-															// performed into a
-															// variable for
-															// usage
+		Play.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
 				dispose();
 				new PingPong();
 			}
-		});// Play button
+		});
 
-		Quit.addActionListener(new ActionListener() { // Take Quit button, add
-														// new actionlistener
-			public void actionPerformed(ActionEvent e) { // Turn the action
-															// performed into a
-															// variable for
-															// usage
-				System.exit(0); // Shut down the program
+		Multiplay.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
 			}
-		});// Quit button
+		});
+
+		Quit.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				System.exit(0);
+			}
+		});
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+
 	}
 }

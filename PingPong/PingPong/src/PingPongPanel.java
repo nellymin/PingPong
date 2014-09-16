@@ -1,4 +1,9 @@
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.image.ImageObserver;
+import java.util.Random;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -18,6 +23,7 @@ public class PingPongPanel extends JPanel {
 	private int stickStepTwo = 0;
 	private int firstPlayerResult = 0; // Lyudmil
 	private int secondPlayerResult = 0; // Lyudmil
+	private boolean isPaused = false; // Dani
 
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -27,11 +33,19 @@ public class PingPongPanel extends JPanel {
 		g.fillRect((int) getSize().getWidth() - 6, stickTwoStart, 5, STICK_SIZE);
 		g.drawString("Player 1: " + firstPlayerResult, 5, 10); // Lyudmil
 		g.drawString("Player 2: " + secondPlayerResult, getWidth() - 60, 10); // Lyudmil
+		
+		if (isPaused) {								
+			Font f = new Font("Dialog", Font.ITALIC, 20);					//	Dani
+			g.setFont(f);
+			g.drawString("PAUSED", getWidth() / 2 - 50, getHeight() / 2);
+		}
 	}
-
+	
 	public void moveBall() {
+		if(!isPaused){
 		ballStartX += this.ballStepX;
 		ballStartY += this.ballStepY;
+		
 		if (ballStartX + BALL_SIZE > getSize().getWidth()) {
 			ballStepX = -1;
 			if (ballStartY < stickTwoStart
@@ -39,12 +53,6 @@ public class PingPongPanel extends JPanel {
 				SoundEffect.SCORE.play();
 				firstPlayerResult++;
 				win(1);
-				// Nelly 
-				ballStartX = 380;
-				ballStartY = 250;
-				ballStepX=0;
-				ballStepY=0;
-				// Nelly
 			}
 			else
 				SoundEffect.PAD_BOUNCE.play();
@@ -59,12 +67,6 @@ public class PingPongPanel extends JPanel {
 				SoundEffect.SCORE.play();
 				secondPlayerResult++;
 				win(2);
-				// Nelly
-				ballStartX = 380;
-				ballStartY = 250;
-				ballStepX=0;
-				ballStepY=0;
-				//Nelly
 			}
 			else
 				SoundEffect.PAD_BOUNCE.play();
@@ -78,6 +80,7 @@ public class PingPongPanel extends JPanel {
 		if (ballStartY < 0) {
 			ballStepY = 1;
 			SoundEffect.WALL_BOUNCE.play();
+		}
 		}
 	}
 
@@ -110,18 +113,41 @@ public class PingPongPanel extends JPanel {
 	public void setStickStepTwo(int step) {
 		this.stickStepTwo = step;
 	}
-
-	public void randomBallMovement() { // метод, който ще стартира топчето от
-										// центъра с random посока
+	
+	public boolean getPaused() {
+		return isPaused;
 	}
 
-	private void win(int player) { // Niki 15
+	public void setPaused(boolean isPaused) {
+		this.isPaused = isPaused;
+	}
 
+	public void randomBallMovement() { // метод, който ще стартира топчето оfт  центъра с random посока
+		int[] side = {1, -1};
+		Random rand = new Random();
+		setStepX(side[rand.nextInt(2)]);
+		setStepY(side[rand.nextInt(2)]);
+	}
+	
+	private void win(int player) { // Niki 15
+		PingPong.setRunning(!PingPong.getRunning()); // Dani   
+		centeringStickAndBall();  // Dani
+		setStepX(0);
+		setStepY(0);
 		String message = "Player " + player + " WIN!  \nplayer 1  | "
 				+ firstPlayerResult + " - " + secondPlayerResult
 				+ " |  player 2";
 		JOptionPane.showMessageDialog(null, message, "PiNg PoNg reSult",
 				JOptionPane.WARNING_MESSAGE);
-		// randomBallMovement();
+	}
+
+	void centeringStickAndBall() { // Dani
+		ballStartX = 380;
+		ballStartY = 250;
+		randomBallMovement();
+		setStickStep(0);
+		setStickStepTwo(0);
+		this.stickOneStart = getHeight() / 2 - 80;  // setting the sticks to start from the center
+		this.stickTwoStart = getHeight() / 2 - 80;  
 	}
 }
