@@ -129,13 +129,10 @@ public class PingPongPanel extends JPanel {
 	}
 
 	public void randomBallMovement() { // метод, който ще стартира топчето оfт  центъра с random посока
-		int[] sideX = {1, -1};
-		int[] sideY = {1, -1};
+		int[] side = {1, -1};
 		Random rand = new Random();
-		int randomX = rand.nextInt(2);
-		int randomY = rand.nextInt(2);
-		setStepX(sideX[randomX]);
-		setStepY(sideY[randomY]);
+		setStepX(side[rand.nextInt(2)]);
+		setStepY(side[rand.nextInt(2)]);
 	}
 	
 	private void win(int player) { // Niki 15
@@ -146,11 +143,12 @@ public class PingPongPanel extends JPanel {
 				+ " |  player 2";
 		JOptionPane.showMessageDialog(null, message, "PiNg PoNg reSult",
 				JOptionPane.WARNING_MESSAGE);
+		randomBallMovement();
 	}
 
 	private void centeringStickAndBall() { // Dani
-		ballStartX = getWidth() / 2;
-		ballStartY = getHeight() / 2;
+		ballStartX = 380;
+		ballStartY = 250;
 		randomBallMovement();
 		setStickStep(0);
 		setStickStepTwo(0);
