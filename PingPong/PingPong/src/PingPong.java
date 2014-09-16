@@ -1,8 +1,6 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 public class PingPong {
 	private static PingPongPanel pingPongPanel;
@@ -48,13 +46,13 @@ public class PingPong {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_UP) {
+			if (!isPaused && e.getKeyCode() == KeyEvent.VK_UP) {
 				pingPongPanel.setStickStepTwo(-1);
-			} else if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_DOWN) {
+			} else if (!isPaused && e.getKeyCode() == KeyEvent.VK_DOWN) {
 				pingPongPanel.setStickStepTwo(1);
-			} else if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_S) {
+			} else if (!isPaused && e.getKeyCode() == KeyEvent.VK_S) {
 				pingPongPanel.setStickStep(1);
-			} else if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_W) {
+			} else if (!isPaused && e.getKeyCode() == KeyEvent.VK_W) {
 				pingPongPanel.setStickStep(-1);
 			} else if (!isRunning && !isPaused && e.getKeyCode() == KeyEvent.VK_ENTER) {
 				isRunning = true;
