@@ -1,8 +1,5 @@
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.image.ImageObserver;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
@@ -33,44 +30,41 @@ public class PingPongPanel extends JPanel {
 		g.fillRect((int) getSize().getWidth() - 6, stickTwoY, 5, STICK_SIZE);
 		g.drawString("Player 1: " + firstPlayerResult, 5, 10); // Lyudmil
 		g.drawString("Player 2: " + secondPlayerResult, getWidth() - 60, 10); // Lyudmil
-		
-		if (isPaused) {								
-			Font f = new Font("Dialog", Font.ITALIC, 20);					//	Dani
+
+		if (isPaused) {
+			Font f = new Font("Dialog", Font.ITALIC, 20); // Dani
 			g.setFont(f);
 			g.drawString("PAUSED", getWidth() / 2 - 50, getHeight() / 2);
 		}
 	}
-	
+
 	public void moveBall() {
-		if(!isPaused){			
+		if (!isPaused) {
 			if (ballX + BALL_SIZE > getSize().getWidth()) {
-				if (ballY < stickTwoY
-						|| ballY > stickTwoY + STICK_SIZE) {
+				if (ballY < stickTwoY || ballY > stickTwoY + STICK_SIZE) {
 					SoundEffect.SCORE.play();
 					firstPlayerResult++;
 					win(1);
-				}
-				else {
+				} else {
 					SoundEffect.PAD_BOUNCE.play();
 					setBallStepXY();
 				}
-				// мини задача: за по- добър визуален ефект топчето да излиза извън
+				// мини задача: за по- добър визуален ефект топчето да излиза
+				// извън
 				// очертанието на полето.
 			}
-	
+
 			if (ballX < 0) {
-				if (ballY < stickOneY
-						|| ballY > stickOneY + STICK_SIZE) {
+				if (ballY < stickOneY || ballY > stickOneY + STICK_SIZE) {
 					SoundEffect.SCORE.play();
 					secondPlayerResult++;
 					win(2);
-				}
-				else {
+				} else {
 					SoundEffect.PAD_BOUNCE.play();
 					setBallStepXY();
 				}
 			}
-		
+
 			if (ballY + BALL_SIZE > getSize().getHeight() || ballY < 0) {
 				ballStepY *= -1;
 				SoundEffect.WALL_BOUNCE.play();
@@ -83,14 +77,12 @@ public class PingPongPanel extends JPanel {
 
 	public void moveStick() {
 		this.stickOneY += this.stickOneStep;
-		if (stickOneY <= 1
-				|| stickOneY >= getSize().getHeight() - STICK_SIZE) { // Niki
+		if (stickOneY <= 1 || stickOneY >= getSize().getHeight() - STICK_SIZE) { // Niki
 			// 14
 			this.stickOneStep = 0; // Niki 14
 		}
-			this.stickTwoY += this.stickTwoStep;
-		if (stickTwoY <= 1
-				|| stickTwoY >= getSize().getHeight() - STICK_SIZE) {
+		this.stickTwoY += this.stickTwoStep;
+		if (stickTwoY <= 1 || stickTwoY >= getSize().getHeight() - STICK_SIZE) {
 			this.stickTwoStep = 0;
 		}
 	}
@@ -110,7 +102,7 @@ public class PingPongPanel extends JPanel {
 	public void setStickStepTwo(int step) {
 		this.stickTwoStep = step;
 	}
-	
+
 	public boolean getPaused() {
 		return isPaused;
 	}
@@ -119,16 +111,17 @@ public class PingPongPanel extends JPanel {
 		this.isPaused = isPaused;
 	}
 
-	public void randomBallMovement() { // метод, който ще стартира топчето оfт  центъра с random посока
+	public void randomBallMovement() { // метод, който ще стартира топчето оfт
+										// центъра с random посока
 		int[] side = {1, -1};
 		Random rand = new Random();
 		setStepX(side[rand.nextInt(2)]);
 		setStepY(side[rand.nextInt(2)]);
 	}
-	
+
 	private void win(int player) { // Niki 15
-		PingPong.setRunning(!PingPong.getRunning()); // Dani   
-		centeringStickAndBall();  // Dani
+		PingPong.setRunning(!PingPong.getRunning()); // Dani
+		centeringStickAndBall(); // Dani
 		setStepX(0);
 		setStepY(0);
 		String message = "Player " + player + " WIN!  \nplayer 1  | "
@@ -137,7 +130,7 @@ public class PingPongPanel extends JPanel {
 		JOptionPane.showMessageDialog(null, message, "PiNg PoNg reSult",
 				JOptionPane.WARNING_MESSAGE);
 	}
-	
+
 	private void setBallStepXY() {
 		int steps = 5;
 		int[] stickSectionCoord = new int[steps];
@@ -146,41 +139,38 @@ public class PingPongPanel extends JPanel {
 			ySteps[i] = i <= steps / 2 ? (steps / 2 - i) * -1 : i - steps / 2;
 		}
 		int sectionSize = STICK_SIZE / stickSectionCoord.length;
-		
+
 		if (ballStepX == 1) {
-			//stickTwoY
+			// stickTwoY
 			for (int i = 1; i < steps; i++) {
-				//initialize array with the coordinates of stick sectors
+				// initialize array with the coordinates of stick sectors
 				stickSectionCoord[i] = i * sectionSize + stickTwoY;
 			}
-		}
-		else {
-			//initialize array with the coordinates of stick sectors
+		} else {
+			// initialize array with the coordinates of stick sectors
 			for (int i = 1; i < steps; i++) {
 				stickSectionCoord[i] = i * sectionSize + stickOneY;
 			}
 		}
 		for (int i = 0; i < steps - 1; i++) {
-			if (ballY > stickSectionCoord[i] &&
-					ballY < stickSectionCoord[i + 1]) {
+			if (ballY > stickSectionCoord[i]
+					&& ballY < stickSectionCoord[i + 1]) {
 				ballStepY = ySteps[i];
 				ballStepX *= -1;
 				break;
 			}
 		}
 	}
-	
+
 	private int AISpeed = 0;
 	public void moveAIPaddle() {
 		AISpeed++;
-		if (AISpeed > 20){
-			if (ballY < stickTwoY + 30) {
-				stickTwoStep = -1;
-			}
-			else if (ballY > stickTwoY + STICK_SIZE - 30) {
-				stickTwoStep = 1;
-			}
-			else if (ballY == stickTwoY + STICK_SIZE / 2) {
+		if (AISpeed > 40) {
+			if (ballY < stickTwoY) {
+				stickTwoStep = -2;
+			} else if (ballY > stickTwoY + STICK_SIZE / 2) {
+				stickTwoStep = 2;
+			} else if (ballY == stickTwoY + STICK_SIZE / 2) {
 				stickTwoStep = 0;
 			}
 		}
@@ -192,7 +182,8 @@ public class PingPongPanel extends JPanel {
 		randomBallMovement();
 		setStickStep(0);
 		setStickStepTwo(0);
-		this.stickOneY = getHeight() / 2 - 80;  // setting the sticks to start from the center
-		this.stickTwoY = getHeight() / 2 - 80;  
+		this.stickOneY = getHeight() / 2 - 80; // setting the sticks to start
+												// from the center
+		this.stickTwoY = getHeight() / 2 - 80;
 	}
 }
