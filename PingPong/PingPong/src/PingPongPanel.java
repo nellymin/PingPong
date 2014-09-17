@@ -46,7 +46,7 @@ public class PingPongPanel extends JPanel {
 					firstPlayerResult++;
 					win(1);
 				} else {
-				//	SoundEffect.PAD_BOUNCE.play();
+					SoundEffect.PAD_BOUNCE.play();
 					setBallStepXY();
 				}
 				
@@ -57,14 +57,14 @@ public class PingPongPanel extends JPanel {
 					secondPlayerResult++;
 					win(2);
 				} else {
-				//	SoundEffect.PAD_BOUNCE.play();
+					SoundEffect.PAD_BOUNCE.play();
 					setBallStepXY();
 				}
 			}
 
 			if (ballY + BALL_SIZE > getSize().getHeight() || ballY < 0) {
 				ballStepY *= -1;
-			//	SoundEffect.WALL_BOUNCE.play();
+				SoundEffect.WALL_BOUNCE.play();
 			}
 
 			ballX += this.ballStepX;
@@ -135,7 +135,7 @@ public class PingPongPanel extends JPanel {
 				+ " |  player 2";
 		JOptionPane.showMessageDialog(null, message, "PiNg PoNg reSult",
 				JOptionPane.WARNING_MESSAGE);
-		//SoundEffect.SCORE.play();
+		SoundEffect.SCORE.play();
 	}
 
 	private void setBallStepXY() {
