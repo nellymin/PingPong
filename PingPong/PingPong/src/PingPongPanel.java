@@ -49,9 +49,7 @@ public class PingPongPanel extends JPanel {
 					SoundEffect.PAD_BOUNCE.play();
 					setBallStepXY();
 				}
-				// мини задача: за по- добър визуален ефект топчето да излиза
-				// извън
-				// очертанието на полето.
+				
 			}
 
 			if (ballX < 5) {
@@ -119,8 +117,8 @@ public class PingPongPanel extends JPanel {
 		this.isPaused = isPaused;
 	}
 
-	public void randomBallMovement() { // метод, който ще стартира топчето оfт
-										// центъра с random посока
+	public void randomBallMovement() { 
+										
 		int[] side = {1, -1};
 		Random rand = new Random();
 		setStepX(side[rand.nextInt(2)]);
@@ -184,13 +182,13 @@ public class PingPongPanel extends JPanel {
 		}
 	}
 
-	void centeringStickAndBall() { // Dani
-		ballX = 380;  
-		ballY = 250;
+	void centeringStickAndBall() { // TASK FOR NELLY
+		ballX = 380; // -- 380  
+		ballY = 250; // -- 250
 		randomBallMovement();
 		setStickStep(0);
 		setStickStepTwo(0);
-		this.stickOneY = getHeight() / 2 - 80; // setting the sticks to start
-		this.stickTwoY = getHeight() / 2 - 80;
+		this.stickOneY = getHeight() / 2 - 80; // -- 80 // setting the sticks to start
+		this.stickTwoY = getHeight() / 2 - 80; // -- 80
 	}
 }

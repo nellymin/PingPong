@@ -6,6 +6,7 @@ public class PingPong {
 	private static PingPongPanel pingPongPanel;
 	private static JFrame frame;
 	private static boolean isRunning = false;
+	private static boolean isSinglePlayer = true;
 
 	public static void main(String[] args) throws InterruptedException {
 		frame = new JFrame();
@@ -24,8 +25,9 @@ public class PingPong {
 			pingPongPanel.moveBall();
 			pingPongPanel.moveStick();
 			pingPongPanel.repaint();
-			//if (MainMenu.singlePlayer)
-			//pingPongPanel.moveAIPaddle();
+			if (!isSinglePlayer){
+				pingPongPanel.moveAIPaddle();
+			}
 		}
 	}
 
@@ -48,12 +50,12 @@ public class PingPong {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			if (!MainMenu.singlePlayer) {
-				if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_UP) {
+			
+			if (isSinglePlayer && !isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_UP) {
 					pingPongPanel.setStickStepTwo(-2);
-				} else if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_DOWN) {
+			} else if (isSinglePlayer && !isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_DOWN) {
 					pingPongPanel.setStickStepTwo(2);
-					} 
+				 
 			} else if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_S) {
 				pingPongPanel.setStickStep(2);
 			} else if (!isPaused && isRunning && e.getKeyCode() == KeyEvent.VK_W) {
