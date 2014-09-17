@@ -126,6 +126,7 @@ public class PingPongPanel extends JPanel {
 	}
 
 	private void win(int player) { // Niki 15
+		SoundEffect.SCORE.play();
 		PingPong.setRunning(!PingPong.getRunning()); // Dani
 		centeringStickAndBall(); // Dani
 		setStepX(0);
@@ -135,7 +136,6 @@ public class PingPongPanel extends JPanel {
 				+ " |  player 2";
 		JOptionPane.showMessageDialog(null, message, "PiNg PoNg reSult",
 				JOptionPane.WARNING_MESSAGE);
-		SoundEffect.SCORE.play();
 	}
 
 	private void setBallStepXY() {

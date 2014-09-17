@@ -22,6 +22,7 @@ public class PingPong {
 			isSinglePlayer = true;
 			isStarted = true;
 		}else if (reply == "Mylti Player") {
+			
 			isSinglePlayer = true;
 			isStarted = true;
 		}else{
