@@ -126,6 +126,12 @@ public class PingPongPanel extends JPanel {
 	}
 
 	private void win(int player) { // Niki 15
+		
+		for (int i = 0; i < 10; i++) { // final ball movement - for exit t
+			ballX += ballStepX;
+			ballY += ballStepY; 
+		}
+		
 		SoundEffect.SCORE.play();
 		PingPong.setRunning(!PingPong.getRunning()); // Dani
 		centeringStickAndBall(); // Dani
