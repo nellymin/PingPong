@@ -127,7 +127,7 @@ public class PingPongPanel extends JPanel {
 
 	private void win(int player) { // Niki 15
 		
-		for (int i = 0; i < 10; i++) { // final ball movement - for exit t
+		for (int i = 0; i < 10; i++) { // final ball movement - exit table
 			ballX += ballStepX;
 			ballY += ballStepY; 
 		}
