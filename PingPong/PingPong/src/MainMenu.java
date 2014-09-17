@@ -7,7 +7,8 @@ import javax.swing.JFrame;
 public final class MainMenu extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	public static boolean singlePlayer = false;
+	private static boolean isSinglePlayer = false;
+	private static boolean isStarted = false;
 	int screenWidth = 500;
 	int screenHeight = 200;
 	int buttonWidth = 90;
@@ -53,9 +54,10 @@ public final class MainMenu extends JFrame implements ActionListener {
 		Play.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				singlePlayer = true;
-				dispose();
+				isSinglePlayer = true;
+				isStarted = true;
 				new PingPong();
+				dispose();
 			}
 		});
 
@@ -63,9 +65,10 @@ public final class MainMenu extends JFrame implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				singlePlayer = false;
-				dispose();
+				isSinglePlayer = false;
+				isStarted = true;
 				new PingPong();
+				dispose();
 			}
 		});
 
@@ -83,4 +86,6 @@ public final class MainMenu extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 
 	}
+	
+	
 }
