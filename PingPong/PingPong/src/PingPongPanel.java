@@ -30,7 +30,7 @@ public class PingPongPanel extends JPanel {
 		g.fillRect(1, stickOneY, 5, STICK_SIZE);
 		g.fillRect((int) getSize().getWidth() - 6, stickTwoY, 5, STICK_SIZE);
 		g.drawString("Player 1: " + firstPlayerResult, 5, 10); // Lyudmil
-		g.drawString("Player 2: " + secondPlayerResult, getWidth() - 60, 10); // Lyudmil
+		g.drawString("Player 2: " + secondPlayerResult, getWidth() - 70, 10); // Lyudmil
 
 		if (isPaused) {
 			Font f = new Font("Dialog", Font.ITALIC, 20); // Dani
@@ -42,7 +42,7 @@ public class PingPongPanel extends JPanel {
 	public void moveBall() {
 		if (!isPaused) {
 			if (ballX + BALL_SIZE > getSize().getWidth() - 5) {
-				if (ballY + BALL_SIZE / 2 < stickTwoY || ballY + BALL_SIZE / 2 > stickTwoY + STICK_SIZE) {
+				if (ballY + BALL_SIZE < stickTwoY || ballY + BALL_SIZE > stickTwoY + STICK_SIZE) {
 					firstPlayerResult++;
 					win(1);
 				} else {
