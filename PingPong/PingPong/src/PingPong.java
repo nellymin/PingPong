@@ -14,15 +14,15 @@ public class PingPong {
 	
 	public static void main(String[] args) throws InterruptedException {
 		
-		String[] option = {"Single Player", "Mylti Player"};
+		String[] option = {"Single Player", "Multi Player"};
 		String reply = (String) JOptionPane.showInputDialog(null, "Select game", "Ping Pong Game",JOptionPane.QUESTION_MESSAGE,null, option, option[0]);
 		
 		if (reply == "Single Player") {
 			isSinglePlayer = true;
 			isStarted = true;
-		}else if (reply == "Mylti Player") {
+		}else if (reply == "Multi Player") {
 			
-			isSinglePlayer = true;
+			isSinglePlayer = false;
 			isStarted = true;
 		}else{
 			System.exit(0);
@@ -43,10 +43,9 @@ public class PingPong {
 			pingPongPanel.moveBall();
 			pingPongPanel.moveStick();
 			if (isSinglePlayer){
-			    
-			pingPongPanel.moveAIPaddle();
-			pingPongPanel.repaint();
+				pingPongPanel.moveAIPaddle();
 			}
+			pingPongPanel.repaint();
 		}
 	}
 
