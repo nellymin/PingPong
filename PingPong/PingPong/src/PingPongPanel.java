@@ -117,7 +117,7 @@ public class PingPongPanel extends JPanel {
 		this.isPaused = isPaused;
 	}
 
-	public void randomBallMovement() { 
+	private void randomBallMovement() { 
 										
 		int[] side = {1, -1};
 		Random rand = new Random();

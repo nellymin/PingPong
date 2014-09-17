@@ -15,7 +15,6 @@ public class PingPong {
 	public static void main(String[] args) throws InterruptedException {
 		
 		String[] option = {"Single Player", "Mylti Player"};
-	//	MainMenu menu = new MainMenu();
 		String reply = (String) JOptionPane.showInputDialog(null, "Select game", "Ping Pong Game",JOptionPane.QUESTION_MESSAGE,null, option, option[0]);
 		
 		if (reply == "Single Player") {
@@ -43,9 +42,10 @@ public class PingPong {
 			Thread.sleep(3);
 			pingPongPanel.moveBall();
 			pingPongPanel.moveStick();
-			pingPongPanel.repaint();
 			if (isSinglePlayer){
-				pingPongPanel.moveAIPaddle();
+			    
+			pingPongPanel.moveAIPaddle();
+			pingPongPanel.repaint();
 			}
 		}
 	}
@@ -82,7 +82,6 @@ public class PingPong {
 				isRunning = true;
 				pingPongPanel.centeringStickAndBall();
 			} else if (isRunning && e.getKeyCode() == KeyEvent.VK_SPACE) {
-				// pause Dani
 				pingPongPanel.setStickStep(0);
 				pingPongPanel.setStickStepTwo(0);
 				pingPongPanel.setPaused(!pingPongPanel.getPaused());
@@ -90,6 +89,7 @@ public class PingPong {
 			}
 			else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 				frame.dispose(); // exit frame
+				System.exit(0);
 			}
 		}
 	}
