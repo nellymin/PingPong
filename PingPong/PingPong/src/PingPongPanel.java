@@ -125,13 +125,9 @@ public class PingPongPanel extends JPanel {
 		setStepY(side[rand.nextInt(2)]);
 	}
 
-	private void win(int player) throws InterruptedException { // Niki 15
-		
-		for (int i = 0; i < 10; i++) { // final ball movement - exit table
-			ballX += ballStepX;
-			ballY += ballStepY; 
-			Thread.sleep(3);
-		}
+	private void win(int player)   { // Niki 15
+			ballX += ballStepX*10; // final ball movement - exit table
+			ballY += ballStepY*10; 
 		
 		SoundEffect.SCORE.play();
 		PingPong.setRunning(!PingPong.getRunning()); // Dani
