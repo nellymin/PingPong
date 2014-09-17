@@ -42,7 +42,7 @@ public class PingPongPanel extends JPanel {
 	public void moveBall() {
 		if (!isPaused) {
 			if (ballX + BALL_SIZE > getSize().getWidth() - 5) {
-				if (ballY + BALL_SIZE < stickTwoY || ballY + BALL_SIZE > stickTwoY + STICK_SIZE) {
+				if (ballY + BALL_SIZE < stickTwoY || ballY  > stickTwoY + STICK_SIZE) {
 					firstPlayerResult++;
 					win(1);
 				} else {
@@ -53,7 +53,7 @@ public class PingPongPanel extends JPanel {
 			}
 
 			if (ballX < 5) {
-				if (ballY + BALL_SIZE / 2 < stickOneY || ballY + BALL_SIZE / 2 > stickOneY + STICK_SIZE) {
+				if (ballY + BALL_SIZE  < stickOneY || ballY  > stickOneY + STICK_SIZE) {
 					secondPlayerResult++;
 					win(2);
 				} else {
