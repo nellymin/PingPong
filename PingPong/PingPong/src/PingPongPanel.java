@@ -21,6 +21,7 @@ public class PingPongPanel extends JPanel {
 	private int stickTwoStep = 0;
 	private int firstPlayerResult = 0; // Lyudmil
 	private int secondPlayerResult = 0; // Lyudmil
+	private int stickHits = 0;
 	private boolean isPaused = false; // Dani
 
 	@Override
@@ -128,7 +129,7 @@ public class PingPongPanel extends JPanel {
 	private void win(int player)   { // Niki 15
 			ballX += ballStepX*10; // final ball movement - exit table
 			ballY += ballStepY*10; 
-		
+		this.stickHits = 0;
 		SoundEffect.SCORE.play();
 		PingPong.setRunning(!PingPong.getRunning()); // Dani
 		centeringStickAndBall(); // Dani
@@ -137,11 +138,13 @@ public class PingPongPanel extends JPanel {
 		String message = "Player " + player + " WIN!  \nplayer 1  | "
 				+ firstPlayerResult + " - " + secondPlayerResult
 				+ " |  player 2";
-		JOptionPane.showMessageDialog(null, message, "PiNg PoNg reSult",
+		JOptionPane.showMessageDialog(null, message, "Ping Pong Result",
 				JOptionPane.WARNING_MESSAGE);
 	}
 
+	private boolean speedUp = false;
 	private void setBallStepXY() {
+		this.stickHits++;
 		int[] stickSectionCoord = new int[STEPS];
 		int[] ySteps = new int[STEPS];
 		for (int i = 0; i < STEPS; i++) {
@@ -166,15 +169,27 @@ public class PingPongPanel extends JPanel {
 					&& ballY + (BALL_SIZE / 2) < stickSectionCoord[i + 1]) {
 				ballStepY = ySteps[i];
 				ballStepX *= -1;
+				if (ballStepY == 0) {
+					ballStepX += ballStepX > 0 ? 1 : -1;
+					speedUp = true;
+				}
+				else if (speedUp) {
+					ballStepX = ballStepX > 0 ? 1 : -1;
+				}
+				if (this.stickHits > 10) {
+					ballStepX += ballStepX > 0 ? 1 : -1;
+					this.stickHits = 0;
+				}
 				break;
 			}
 		}
 	}
 
-	private int AISpeed = 0;
+	private int AISpeed = 41;
 	public void moveAIPaddle() {
-		AISpeed++;
+		//AISpeed++;
 		if (AISpeed > 40) {
+			//AISpeed = 0;
 			if (ballY < stickTwoY) {
 				stickTwoStep = -2;
 			} else if (ballY > stickTwoY + STICK_SIZE / 2) {
